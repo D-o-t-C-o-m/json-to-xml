@@ -1,7 +1,6 @@
 package org.example;
-import com.github.underscore.*;
+import com.github.underscore.U;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 
@@ -19,21 +18,14 @@ public class Main {
 		String newFilePath = filePath.replace(".json", ".xml");
 
 		String inputJson = readFile(filePath);
-		String outputXml = U.jsonToXml(inputJson);
 
-		System.out.println(outputXml);
-		File targetFile = new File(newFilePath);
-		OutputStream outStream = new FileOutputStream(targetFile);
-		outStream.write(outputXml.getBytes());
-		outStream.close();
-
-	System.out.println("Processing complete. File saved to "+newFilePath);
+		writeFile(newFilePath, inputJson);
 }
 
 public static String readFile(String filePath) throws IOException {
 	File inputFile = new File(filePath);
 
-	BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile), StandardCharsets.UTF_8));
+	BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile)));
 	StringBuilder builder = new StringBuilder();
 
 	String line;
@@ -48,6 +40,17 @@ public static String readFile(String filePath) throws IOException {
 	inputJson = inputJson.replace(" ", "");
 	return inputJson;
 
+}
+
+public static void writeFile(String filePath, String input) throws IOException {
+	String outputXml = U.jsonToXml(input);
+
+	File targetFile = new File(filePath);
+	OutputStream outStream = new FileOutputStream(targetFile);
+	outStream.write(outputXml.getBytes());
+	outStream.close();
+
+	System.out.println("Processing complete. File saved to " + filePath);
 }
 
 
