@@ -1,6 +1,5 @@
 package org.example;
 
-
 import org.example.UI.UI;
 
 public class Main {
