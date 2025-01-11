@@ -1,4 +1,6 @@
-package org.example;
+package org.example.UI;
+import org.example.logic.JsonToXml;
+
 import java.util.Scanner;
 
 public class UI {

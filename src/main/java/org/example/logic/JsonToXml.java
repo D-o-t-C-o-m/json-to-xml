@@ -1,4 +1,4 @@
-package org.example;
+package org.example.logic;
 import com.github.underscore.U;
 import java.io.*;
 import java.util.Scanner;
@@ -10,8 +10,18 @@ public static void start() {
 
 	System.out.println("\nJSON TO XML CONVERSION\n");
 
+	System.out.println("Warning: This will overwrite any existing xml file.");
 	System.out.print("Enter Filepath of the item to convert:");
+
 	String filePath = scanner.nextLine();
+
+	while (!(filePath.contains(".json"))) {
+			System.out.println("\nInvalid Filepath, please make sure your file ends in '.json.'");
+			System.out.print("Enter Filepath of the item to convert:");
+			filePath = scanner.nextLine();
+		}
+		scanner.close();
+
 	scanner.close();
 
 	String newFilePath = filePath.replace(".json", ".xml");
