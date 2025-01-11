@@ -1,2 +1,2 @@
-# json-to-xml
-a simple json to xml converter
+# Converter program
+a simple json to xml / xml to json / dat to xml converter
