@@ -4,7 +4,7 @@ import com.github.underscore.U;
 import java.io.*;
 import java.util.Scanner;
 
-public abstract class FileConverter {
+public class FileConverter {
 public static void start (String startExtension, String endExtension, String conversion){
 	Scanner scanner = new Scanner(System.in);
 	System.out.println("____________________________");

@@ -1,7 +1,6 @@
 package org.example.UI;
 import org.example.logic.DatToXml;
-import org.example.logic.JsonToXml;
-import org.example.logic.XmlToJson;
+import org.example.logic.FileConverter;
 
 import java.util.Scanner;
 
@@ -24,10 +23,10 @@ public static void ui() {
 
 	switch (input) {
 		case "1":
-			JsonToXml.start();
+			FileConverter.start("json", "xml", "jsonToXml");
 			break;
 		case "2":
-			XmlToJson.start();
+			FileConverter.start("xml", "json", "xmlToJson");
 			break;
 		case "3":
 			DatToXml.start();
