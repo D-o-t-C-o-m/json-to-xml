@@ -59,7 +59,8 @@ public static void start(){
 	public static void writeFile(String filePath, String input) {
 		try {
 			//String outputXml = U.jsonToXml(input);
-
+			//TODO: Make this export as multiple lines and then begin the work of Transformsing the data.
+			//Currently exports as a text file with all entries on one line. Scratch.txt contains dat breakdown.
 			File targetFile = new File(filePath);
 			OutputStream outStream = new FileOutputStream(targetFile);
 			outStream.write(input.getBytes());
