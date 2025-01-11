@@ -1,5 +1,6 @@
 package org.example.UI;
 import org.example.logic.JsonToXml;
+import org.example.logic.XmlToJson;
 
 import java.util.Scanner;
 
@@ -25,9 +26,8 @@ public static void ui() {
 			JsonToXml.start();
 			break;
 		case "2":
-			System.out.println("Placeholder text");
+			XmlToJson.start();
 			break;
-		//XmlToJson.start();
 		case "3":
 			System.out.println("Placeholder text");
 			break;
