@@ -60,7 +60,7 @@ public static void start(){
 		try {
 			//String outputXml = U.jsonToXml(input);
 			//TODO: Make this export as multiple lines and then begin the work of Transformsing the data.
-			//Currently exports as a text file with all entries on one line. Scratch.txt contains dat breakdown.
+			//Currently exports as a text file with all entries on one line. Scratch.txt contains dat breakdown. - https://gist.github.com/D-o-t-C-o-m/b56c1d61931fbbc361aa9ac3cbf64967
 			File targetFile = new File(filePath);
 			OutputStream outStream = new FileOutputStream(targetFile);
 			outStream.write(input.getBytes());
@@ -69,7 +69,8 @@ public static void start(){
 			System.out.println("\nProcessing complete. File saved to " + filePath);
 		}
 		catch (Exception | Error e) {
-			System.out.println(e);
+			//TODO add real logging?
+			e.printStackTrace();
 			System.out.println(e.getMessage());
 		}
 	}

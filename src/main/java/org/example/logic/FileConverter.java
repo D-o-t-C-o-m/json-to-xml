@@ -66,7 +66,7 @@ public static void writeFile(String filePath, String input, String conversion) {
 		System.out.println("\nProcessing complete. File saved to " + filePath);
 	}
 	catch (Exception | Error e) {
-		System.out.println(e);
+		e.printStackTrace();
 		System.out.println(e.getMessage());
 	}
 }
