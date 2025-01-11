@@ -1,4 +1,5 @@
 package org.example.UI;
+import org.example.logic.DatToXml;
 import org.example.logic.JsonToXml;
 import org.example.logic.XmlToJson;
 
@@ -29,9 +30,8 @@ public static void ui() {
 			XmlToJson.start();
 			break;
 		case "3":
-			System.out.println("Placeholder text");
+			DatToXml.start();
 			break;
-		//DatToXml.start();
 	}
 }
 
