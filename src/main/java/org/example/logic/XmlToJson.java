@@ -23,13 +23,7 @@ public static void start() {
 	}
 	scanner.close();
 
-	scanner.close();
-
-	String newFilePath = filePath.replace(".xml", ".json");
-
-	String inputJson = readFile(filePath);
-
-	writeFile(newFilePath, inputJson);
+	writeFile(filePath.replace(".xml", ".json"), readFile(filePath));
 }
 
 public static String readFile(String filePath) {
@@ -44,12 +38,12 @@ public static String readFile(String filePath) {
 		while ((line = reader.readLine()) != null) {
 			builder.append(line);
 		}
-		String inputXml = builder.toString().trim();
+		String input = builder.toString().trim();
 
 		reader.close();
 
-		inputXml = inputXml.replace(" ", "");
-		return inputXml;
+		input = input.replace(" ", "");
+		return input;
 	}
 	catch (Exception | Error e) {
 		System.out.println(e);
@@ -60,11 +54,11 @@ public static String readFile(String filePath) {
 
 public static void writeFile(String filePath, String input) {
 	try {
-		String outputJson = U.xmlToJson(input);
+		String output = U.xmlToJson(input);
 
 		File targetFile = new File(filePath);
 		OutputStream outStream = new FileOutputStream(targetFile);
-		outStream.write(outputJson.getBytes());
+		outStream.write(output.getBytes());
 		outStream.close();
 
 		System.out.println("\nProcessing complete. File saved to " + filePath);

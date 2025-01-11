@@ -8,7 +8,9 @@ import java.util.Scanner;
 public class DatToXml {
 
 public static void start(){
+
 	Scanner scanner = new Scanner(System.in);
+
 	System.out.println("____________________________");
 	System.out.println("===DAT TO XML CONVERSION===");
 	System.out.println("----------------------------");
@@ -19,17 +21,12 @@ public static void start(){
 	String filePath = scanner.nextLine();
 
 	while (!(filePath.contains(".dat"))) {
+
 		System.out.println("\nInvalid Filepath, please make sure your file ends in '.dat'");
 		System.out.print("Enter Filepath of the item to convert:");
 		filePath = scanner.nextLine();
 	}
 		scanner.close();
-
-	scanner.close();
-
-	//String newFilePath = filePath.replace(".json", ".xml");
-
-	//String inputDat = ;
 
 	writeFile(filePath.replace(".dat",".txt"), readFile(filePath));
 }

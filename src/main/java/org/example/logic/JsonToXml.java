@@ -21,15 +21,10 @@ public static void start() {
 			System.out.print("Enter Filepath of the item to convert:");
 			filePath = scanner.nextLine();
 		}
-		scanner.close();
 
 	scanner.close();
 
-	String newFilePath = filePath.replace(".json", ".xml");
-
-	String inputJson = readFile(filePath);
-
-	writeFile(newFilePath, inputJson);
+	writeFile(filePath.replace(".json", ".xml"), readFile(filePath));
 }
 
 public static String readFile(String filePath) {
@@ -44,12 +39,12 @@ public static String readFile(String filePath) {
 		while ((line = reader.readLine()) != null) {
 			builder.append(line);
 		}
-		String inputJson = builder.toString().trim();
+		String input = builder.toString().trim();
 
 		reader.close();
 
-		inputJson = inputJson.replace(" ", "");
-		return inputJson;
+		input = input.replace(" ", "");
+		return input;
 	}
 	catch (Exception | Error e) {
 		System.out.println(e);
@@ -60,11 +55,11 @@ public static String readFile(String filePath) {
 
 public static void writeFile(String filePath, String input) {
 	try {
-		String outputXml = U.jsonToXml(input);
+		String output = U.jsonToXml(input);
 
 		File targetFile = new File(filePath);
 		OutputStream outStream = new FileOutputStream(targetFile);
-		outStream.write(outputXml.getBytes());
+		outStream.write(output.getBytes());
 		outStream.close();
 
 		System.out.println("\nProcessing complete. File saved to " + filePath);
