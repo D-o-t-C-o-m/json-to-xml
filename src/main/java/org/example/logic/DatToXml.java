@@ -6,9 +6,11 @@ import java.util.Scanner;
 
 public class DatToXml {
 public ArrayList<String> Items;
+
 public DatToXml() {
 	this.Items = new ArrayList<>();
 }
+
 public static void start() {
 	DatToXml datToXml = new DatToXml();
 	Scanner scanner = new Scanner(System.in);
@@ -29,37 +31,45 @@ public static void start() {
 		filePath = scanner.nextLine();
 	}
 	scanner.close();
-	String fileContents = datToXml.readFile(filePath);
 
-	writeFile(filePath.replace(".dat", ".xml"), fileContents );
+	datToXml.readFile(filePath);
+
+	writeFile(filePath.replace(".dat", ".xml"), datToXml.Items);
 }
 
-public String readFile(String filePath) {
+public void readFile(String filePath) {
 
 	try {
 		File inputFile = new File(filePath);
 		Scanner reader = new Scanner(inputFile);
 		while (reader.hasNextLine()) {
 			String line = reader.nextLine();
+			if(line.contains("&")){
+				line = line.replace("&", " ");
+			}
 			this.Items.add(line);
+
 		}
 		reader.close();
-		return String.join("\n", this.Items);
+		String.join("\n", this.Items);
 	} catch (Exception | Error e) {
 		System.out.println(e);
 		System.out.println(e.getMessage());
-		return null;
 	}
 }
 
-public static void writeFile(String filePath, String input) {
+public static void writeFile(String filePath, ArrayList<String>input) {
 	try {
-		String output = transform(input);
 
 		//Scratch.txt contains dat breakdown. - https://gist.github.com/D-o-t-C-o-m/b56c1d61931fbbc361aa9ac3cbf64967
 		File targetFile = new File(filePath);
 		OutputStream outStream = new FileOutputStream(targetFile);
-		outStream.write(("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" + "<root>\n" + output + "</root>").getBytes());
+		outStream.write(("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<root>\n").getBytes());
+		for (String item : input) {
+			String output = transform(item);
+			outStream.write(output.getBytes());
+		}
+		outStream.write("</root>".getBytes());
 		outStream.close();
 
 		System.out.println("\nProcessing complete. File saved to " + filePath);
