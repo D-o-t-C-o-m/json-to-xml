@@ -1,30 +1,31 @@
 package org.example.logic;
 
 import com.github.underscore.U;
+
 import java.io.*;
 import java.util.Scanner;
 
 public class FileConverter {
-public static void start (String startExtension, String endExtension, String conversion){
+public static void start(String startExtension, String endExtension, String conversion) {
 	Scanner scanner = new Scanner(System.in);
 	System.out.println("____________________________");
-	System.out.println("==="+startExtension.toUpperCase()+" TO "+ endExtension.toUpperCase()+ " conversion===");
+	System.out.println("===" + startExtension.toUpperCase() + " TO " + endExtension.toUpperCase() + " conversion===");
 	System.out.println("----------------------------");
 
-	System.out.println("Warning: This will overwrite any existing "+endExtension+" file.");
+	System.out.println("Warning: This will overwrite any existing " + endExtension + " file.");
 	System.out.print("Enter Filepath of the item to convert:");
 
 	String filePath = scanner.nextLine();
 
-	while (!(filePath.contains("."+startExtension))) {
-		System.out.println("\nInvalid Filepath, please make sure your file ends in '.'"+endExtension);
+	while (!(filePath.contains("." + startExtension))) {
+		System.out.println("\nInvalid Filepath, please make sure your file ends in '.'" + endExtension);
 		System.out.print("Enter Filepath of the item to convert:");
 		filePath = scanner.nextLine();
 	}
 
 	scanner.close();
 
-	writeFile(filePath.replace("."+startExtension, "."+endExtension), readFile(filePath), conversion);
+	writeFile(filePath.replace("." + startExtension, "." + endExtension), readFile(filePath), conversion);
 }
 
 public static String readFile(String filePath) {
@@ -45,8 +46,7 @@ public static String readFile(String filePath) {
 
 		input = input.replace(" ", "");
 		return input;
-	}
-	catch (Exception | Error e) {
+	} catch (Exception | Error e) {
 		System.out.println(e);
 		System.out.println(e.getMessage());
 		return null;
@@ -55,7 +55,7 @@ public static String readFile(String filePath) {
 
 public static void writeFile(String filePath, String input, String conversion) {
 	try {
-		String output = convert(input,conversion);
+		String output = convert(input, conversion);
 
 		File targetFile = new File(filePath);
 		OutputStream outStream = new FileOutputStream(targetFile);
@@ -64,17 +64,16 @@ public static void writeFile(String filePath, String input, String conversion) {
 		outStream.close();
 
 		System.out.println("\nProcessing complete. File saved to " + filePath);
-	}
-	catch (Exception | Error e) {
+	} catch (Exception | Error e) {
 		e.printStackTrace();
 		System.out.println(e.getMessage());
 	}
 }
+
 public static String convert(String input, String conversion) {
 	if ("jsonToXml".equals(conversion)) {
 		return U.jsonToXml(input);
-	}
-	else if ("xmlToJson".equals(conversion)) {
+	} else if ("xmlToJson".equals(conversion)) {
 		return U.xmlToJson(input);
 	}
 	return null;

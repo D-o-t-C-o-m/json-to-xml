@@ -1,12 +1,14 @@
 package org.example.UI;
+
 import org.example.logic.DatToXml;
 import org.example.logic.FileConverter;
 
 import java.util.Scanner;
 
 public class UI {
-public UI(){
+public UI() {
 }
+
 public static void ui() {
 	System.out.println("==============");
 	System.out.println("File Converter");
