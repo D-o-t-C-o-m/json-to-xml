@@ -17,8 +17,8 @@ public static void ui() {
 	System.out.println("(2) XML to JSON");
 	System.out.println("(3) DAT to XML");
 	System.out.println("(A)ny other key to Quit");
-	System.out.println(" ");
-	System.out.print("> ");
+
+	System.out.print("\n> ");
 
 	Scanner scanner = new Scanner(System.in);
 	String input = scanner.nextLine();
