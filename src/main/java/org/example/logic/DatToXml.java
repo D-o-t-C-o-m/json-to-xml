@@ -42,7 +42,6 @@ public static void start() {
 public static void writeFile(String filePath, ArrayList<String> input) {
 	try {
 
-		//Scratch.txt contains dat breakdown. - https://gist.github.com/D-o-t-C-o-m/b56c1d61931fbbc361aa9ac3cbf64967
 		File targetFile = new File(filePath);
 		OutputStream outStream = new FileOutputStream(targetFile);
 		outStream.write(("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<root>\n").getBytes());
@@ -93,6 +92,7 @@ public static String transform(String input) {
 	String productRecall = input.substring(99, 100);
 	String tax3 = input.substring(100, 101);
 	String tax4 = input.substring(101, 102);
+	//TODO: Come up with a better way to convert this
 	return "<item>\n<storeNum>" + storeNum + "</storeNum>\n<UPC>" + upc + "</UPC>\n<WeightOrPriceRequired>" + weightOrPriceRequired + "</WeightOrPriceRequired>\n<QuantityAllowed>" + quantityAllowed + "</QuantityAllowed>\n<PriceRequired>" + priceRequired + "</PriceRequired>\n<NotForSale>" + notForSale + "</NotForSale>\n<tax1>" + tax1 + "</tax1>\n<tax2>" + tax2 + "</tax2>\n<foodStamp>" + foodStamp + "</foodStamp>\n<EMPoints>" + emPoints + "</EMPoints>\n<ItemType>" + itemType + "</ItemType>\n<PriceMethod>" + priceMethod + "</PriceMethod>\n<Department>" + department + "</Department>\n<family1>" + family1 + "</family1>\n<family2>" + family2 + "</family2>\n<MultiPriceGroup>" + multipriceGroup + "</MultiPriceGroup>\n<Quantity>" + quantity + "</Quantity>\n<LinkedTo>" + linkedTo + "</LinkedTo>\n<Description>" + description + "</Description>\n<RestrictedSale>" + restrictedSale + "</RestrictedSale>\n<WIC>" + wIC + "</WIC>\n<ItemAddedFlag>" + itemAddedFlag + "</ItemAddedFlag>\n<Tare>" + tare + "</Tare>\n<Foodperks>" + foodperks + "</Foodperks>\n<QHP>" + qHP + "</QHP>\n<RX>" + rX + "</RX>\n<LargeLinkedTo>" + largeLinkedTo + "</LargeLinkedTo>\n<ProductRecall>" + productRecall + "</ProductRecall>\n<Tax3>" + tax3 + "</Tax3>\n<Tax4>" + tax4 + "</Tax4>\n</item>\n";
 
 }
