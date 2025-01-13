@@ -104,6 +104,8 @@ public void readFile(String filePath) {
 		Scanner reader = new Scanner(inputFile);
 		while (reader.hasNextLine()) {
 			String line = reader.nextLine();
+
+			//TODO:need to test other special symbols beyond &.
 			if (line.contains("&")) {
 				line = line.replace("&", " ");
 			}
