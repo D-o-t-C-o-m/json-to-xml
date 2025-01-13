@@ -18,7 +18,7 @@ public static void start(String startExtension, String endExtension, String conv
 	String filePath = scanner.nextLine();
 
 	while (!(filePath.contains("." + startExtension))) {
-		System.out.println("\nInvalid Filepath, please make sure your file ends in '.'" + endExtension);
+		System.out.println("\nInvalid Filepath, please make sure your file ends in '.'" + startExtension);
 		System.out.print("Enter Filepath of the item to convert:");
 		filePath = scanner.nextLine();
 	}
